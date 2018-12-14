@@ -2,7 +2,7 @@ import React from 'react';
 
 const landing = () => {
   return(
-    <div>flksaljoiewj</div>
+    <div>Hello! please login</div>
   )
 }
 

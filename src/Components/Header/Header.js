@@ -7,7 +7,11 @@ const Header = () => (
     <AuthConsumer>
       {({ isAuth, login, logout }) => (
         isAuth
-          ? <button onClick={logout}>Logout</button>
+          ? (
+            <div>
+              <Link to="/dashboard">Dashboard</Link>
+              <button onClick={logout}>Logout</button>
+            </div>)
           : <button onClick={login}>Login</button>
       )}
     </AuthConsumer>
