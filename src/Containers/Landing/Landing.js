@@ -5,3 +5,5 @@ const landing = () => {
     <div>flksaljoiewj</div>
   )
 }
+
+export default landing;
