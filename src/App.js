@@ -6,12 +6,9 @@ import Header from './Components/Header/Header';
 
 const App = () => {
   return (
-    <BrowserRouter>
       <AuthProvider>
-        <Header />
-        
+        <Header />    
       </AuthProvider>
-    </BrowserRouter>
   )
 }
 
