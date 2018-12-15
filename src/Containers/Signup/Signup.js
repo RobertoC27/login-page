@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import BaseForm from '../../Components/BaseForm/BaseForm';
 import { AuthConsumer } from '../AuthContext/AuthContext';
+import ServerError from '../../Components/ServerError/ServerError';
 
 const userSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -33,7 +34,7 @@ class Signup extends Component {
           <Fragment>
             <h2>Sign up today!</h2>
             <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} />
-            {this.state.errMsg}
+            <ServerError errMsg={this.state.errMsg} />
           </Fragment>
         )}
       </AuthConsumer>

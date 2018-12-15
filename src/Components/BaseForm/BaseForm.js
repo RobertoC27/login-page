@@ -13,16 +13,18 @@ const MyForm = ({ providedSubmit, valSchema, action }) => {
       validationSchema={valSchema}
       render={formikProps => {
         return (
-          <Form>
-            <div>
-              <Field name="email" type="email" placeholder="Email" />
-              <ErrorMessage name="email" component="span" />
+          <Form className="container col-3 mx-auto">
+            <div className="form-group">
+              <label htmlFor="email">Email address</label>
+              <Field id="email" name="email" type="email" placeholder="Email" className="form-control"/>
+              <ErrorMessage name="email" component="div" className="alert-sm alert-warning rounded text-center" role="alert"/>
             </div>
-            <div>
-              <Field name="password" type="password" placeholder="Password" />
-              <ErrorMessage name="password" component="span" />
+            <div className="form-group">
+            <label htmlFor="password">Password</label>
+              <Field id="password" name="password" type="password" placeholder="Password" className="form-control"/>
+              <ErrorMessage name="password" component="div" className="alert-sm alert-warning rounded text-center" role="alert"/>
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
           </Form>
         )
       }}
