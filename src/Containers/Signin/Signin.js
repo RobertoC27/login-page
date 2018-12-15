@@ -29,6 +29,7 @@ class Signin extends Component {
     return (
       <AuthConsumer>
         {({ login }) => <Fragment>
+          <h2>Enter your credentials</h2>
           <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} action={() =>this.verifySucces(login)} />
           {this.state.errMsg}
         </Fragment>}
