@@ -7,7 +7,8 @@ const MyForm = ({ providedSubmit, valSchema, action }) => {
       initialValues={{ email: '', password: '' }}
       onSubmit={values => {
         providedSubmit(values);
-        action();
+        if(action)
+          action();
       }}
       validationSchema={valSchema}
       render={formikProps => {
