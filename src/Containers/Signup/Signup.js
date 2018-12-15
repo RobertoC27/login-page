@@ -29,7 +29,7 @@ class Signup extends Component {
   render() {
     return (
       <AuthConsumer>
-        {({ }) => (
+        {() => (
           <Fragment>
             <h2>Sign up today!</h2>
             <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} />
