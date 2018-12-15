@@ -17,7 +17,12 @@ class Signin extends Component {
       await axios.post('http://35.165.129.25:3090/signin', { email, password });
       this.props.history.push('/dashboard');
     } catch (error) {
-      this.setState({ errMsg: "Email or Password are incorrect" })
+      if (error.response)
+        this.setState({ errMsg: "Email or Password are incorrect" })
+      else if (error.request)
+        this.setState({ errMsg: 'Couldn\'t contact the server, please try again later' })
+      else
+        this.setState({ errMsg: 'Unknown error, please try again later or contact us' })
     }
   }
   verifySucces(login) {
@@ -30,7 +35,7 @@ class Signin extends Component {
       <AuthConsumer>
         {({ login }) => <Fragment>
           <h2>Enter your credentials</h2>
-          <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} action={() =>this.verifySucces(login)} />
+          <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} action={() => this.verifySucces(login)} />
           {this.state.errMsg}
         </Fragment>}
       </AuthConsumer>

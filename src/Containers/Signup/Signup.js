@@ -17,7 +17,12 @@ class Signup extends Component {
       await axios.post('http://35.165.129.25:3090/signup', { email, password });
       this.props.history.push('/signin');
     } catch (error) {
-      this.setState({ errMsg: error.response.data.error })
+      if(error.response)
+        this.setState({ errMsg: error.response.data.error })
+      else if(error.request)
+        this.setState({errMsg: 'Couldn\'t contact the server, please try again later'})
+      else
+        this.setState({errMsg: 'Unknown error, please try again later or contact us'})
     }
   }
 
