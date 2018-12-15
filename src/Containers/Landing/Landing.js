@@ -8,7 +8,11 @@ const landing = () => {
       {({ isAuth, logout }) => (
         isAuth
           ? <Link to="/" onClick={logout}>Wanna logout?</Link>
-          : <Link to="/signin">Hello, please sign in!</Link>
+          : <div>
+            <Link to="/signin">Hello, please signin!</Link>
+            <br/>
+            <Link to="/signup">or signup!</Link>
+          </div>
       )}
     </AuthConsumer>
   )
