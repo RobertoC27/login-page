@@ -10,6 +10,7 @@ const Header = () => (
           ? (
             <div>
               <Link to="/dashboard">Dashboard</Link>
+              <Link to="/">Home</Link>
               <button onClick={logout}>Logout</button>
             </div>)
           : <button onClick={login}>Login</button>

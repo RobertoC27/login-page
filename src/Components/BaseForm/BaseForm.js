@@ -1,12 +1,13 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-const MyForm = ({ providedSubmit, valSchema }) => {
+const MyForm = ({ providedSubmit, valSchema, action }) => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       onSubmit={values => {
         providedSubmit(values);
+        action();
       }}
       validationSchema={valSchema}
       render={formikProps => {

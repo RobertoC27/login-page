@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const AuthContext = React.createContext(false);
+const AuthContext = React.createContext({isAuth: false});
 
 class AuthProvider extends Component {
   state = { isAuth: false }
