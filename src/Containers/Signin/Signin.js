@@ -13,7 +13,6 @@ class Signin extends Component {
   state = {}
 
   handleSubmit = async ({ email, password }) => {
-    console.log(this.props);
     try {
       await axios.post('http://35.165.129.25:3090/signin', { email, password });
       this.props.history.push('/dashboard');
