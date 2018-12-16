@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthConsumer } from '../../Containers/AuthContext/AuthContext';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => (
   <div>
@@ -18,7 +18,7 @@ const Header = () => (
               isAuth
                 ? (<div>
                   <NavLink to="/dashboard" className="nav-item nav-link d-inline-flex">Dashboard</NavLink>
-                  <Link to="/" className="nav-item nav-link d-inline-flex" onClick={logout}>Logout</Link>
+                  <NavLink to="/signout" className="nav-item nav-link d-inline-flex" onClick={logout}>Logout</NavLink>
                 </div>)
                 : (<div>
                   <NavLink to="/signup" className="nav-item nav-link d-inline-flex">Sign up</NavLink>

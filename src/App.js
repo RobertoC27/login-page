@@ -7,6 +7,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import Signin from './Containers/Signin/Signin';
 import Signup from './Containers/Signup/Signup';
+import Signout from './Components/Signout/signout';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <ProtectedRoute path="/dashboard" exact component={Dashboard} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
+          <Route path="/signout" component={Signout} />
           <Route path="/" exact component={Landing} />
         </Switch>
       </AuthProvider>

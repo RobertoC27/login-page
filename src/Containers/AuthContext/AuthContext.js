@@ -16,8 +16,8 @@ class AuthProvider extends Component {
   }
 
   logout() {
-    localStorage.setItem('token', '');
     this.setState({ isAuth: '' });
+    localStorage.removeItem('token');
   }
   render() {
     return (
