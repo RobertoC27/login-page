@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import BaseForm from '../../Components/BaseForm/BaseForm';
 import { AuthConsumer } from '../AuthContext/AuthContext';
-import ServerError from '../../Components/ServerError/ServerError';
+import Alert from '../../Components/alertMessage/alertMessage';
 
 const userSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -15,8 +15,8 @@ class Signup extends Component {
 
   handleSubmit = async ({ email, password }) => {
     try {
-      await axios.post('http://35.165.129.25:3090/signup', { email, password });
-      this.props.history.push('/signin');
+      const response = await axios.post('http://35.165.129.25:3090/signup', { email, password });
+      localStorage.setItem('token', response.data.token);
     } catch (error) {
       if(error.response)
         this.setState({ errMsg: error.response.data.error })
@@ -27,14 +27,19 @@ class Signup extends Component {
     }
   }
 
+  signin = (login) => {
+    // login();
+    // this.props.history.push('/dashboard');
+  }
+
   render() {
     return (
       <AuthConsumer>
-        {() => (
+        {(login) => (
           <Fragment>
             <h2>Sign up today!</h2>
-            <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} />
-            <ServerError errMsg={this.state.errMsg} />
+            <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} action={() => this.signin(login)}/>
+            <Alert errMsg={this.state.errMsg} alertType="danger"/>
           </Fragment>
         )}
       </AuthConsumer>
