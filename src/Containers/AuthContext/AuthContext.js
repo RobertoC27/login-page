@@ -3,19 +3,21 @@ import React, { Component } from 'react';
 const AuthContext = React.createContext({isAuth: false});
 
 class AuthProvider extends Component {
-  state = { isAuth: false }
   constructor() {
     super();
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.state = { isAuth: localStorage.getItem('token') }
   }
 
-  login() {
-    this.setState({ isAuth: true });
+  login(tkn) {
+    localStorage.setItem('token', tkn);
+    this.setState({ isAuth: tkn });
   }
 
   logout() {
-    this.setState({ isAuth: false });
+    localStorage.setItem('token', '');
+    this.setState({ isAuth: '' });
   }
   render() {
     return (

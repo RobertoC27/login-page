@@ -18,7 +18,7 @@ const Header = () => (
               isAuth
                 ? (<div>
                   <NavLink to="/dashboard" className="nav-item nav-link d-inline-flex">Dashboard</NavLink>
-                  <Link to="/" exact className="nav-item nav-link d-inline-flex" onClick={logout}>Logout</Link>
+                  <Link to="/" className="nav-item nav-link d-inline-flex" onClick={logout}>Logout</Link>
                 </div>)
                 : (<div>
                   <NavLink to="/signup" className="nav-item nav-link d-inline-flex">Sign up</NavLink>

@@ -15,7 +15,8 @@ class Signin extends Component {
 
   handleSubmit = async ({ email, password }) => {
     try {
-      await axios.post('http://35.165.129.25:3090/signin', { email, password });
+      const resp = await axios.post('http://35.165.129.25:3090/signin', { email, password });
+      this.setState({ tkn: resp.data.token });
       this.props.history.push('/dashboard');
     } catch (error) {
       if (error.response)
@@ -26,18 +27,18 @@ class Signin extends Component {
         this.setState({ errMsg: 'Unknown error, please try again later or contact us' })
     }
   }
-  verifySucces(login) {
-    if (this.state.errMsg)
-      return
-    login();
+
+  signin(login) {
+    login(this.state.tkn);
   }
+
   render() {
     return (
       <AuthConsumer>
         {({ login }) => <Fragment>
           <h2>Enter your credentials</h2>
-          <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} action={() => this.verifySucces(login)} />
-          <Alert errMsg={this.state.errMsg} alertType="danger"/>
+          <BaseForm valSchema={userSchema} providedSubmit={this.handleSubmit} action={() => this.signin(login)} />
+          <Alert errMsg={this.state.errMsg} alertType="danger" />
         </Fragment>}
       </AuthConsumer>
     )
